@@ -46,7 +46,7 @@ async def start_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "♬ Werab Qadın", 
+                        "♬ Werab Qadın 🍷", 
                         url=f"https://t.me/{Config.PLAYLIST_NAME}"
                     )
                 ],
@@ -55,7 +55,7 @@ async def start_(client: Client, message: Message):
                         "📚 Menyular" , callback_data= "cbbilgi"
                     ),
                     InlineKeyboardButton(
-                        "💭 Werab Qoxulu 🍷",
+                        "💭 Werab Qoxulu ✈️",
                         url=f"https://t.me/WerabliAnlar"
                     )
                 ],
@@ -133,8 +133,8 @@ async def live(client: Client, message: Message):
   
 #mahnı yükləmə#
 
-@bot.on_message(filters.command("bul") & ~filters.edited)
-def bul(_, message):
+@bot.on_message(filters.command("song") & ~filters.edited)
+def song(_, message):
     query = " ".join(message.command[1:])
     m = message.reply("<b>Mahnınız Axtarılır ... 🔍</b>")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
@@ -149,7 +149,7 @@ def bul(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        m.edit("<b>❌ Elə pis oldum ele pis oldum mahnı tapılmadı.\n\n Zəhmət Olmasa başqa mahnı adı deyin @WerabliAnlar 🍷.</b>")
+        m.edit("<b>❌ Elə pis oldum ele pis oldum 😔 mahnı tapılmadı.\n\n Zəhmət Olmasa başqa mahnı adı deyin @WerabliAnlar 🍷.</b>")
         print(str(e))
         return
     m.edit("<b>📥 Yükləmə İşlemi Başladı...</b>")
@@ -178,7 +178,7 @@ def bul(_, message):
     except Exception as e:
         print(e)
 
-# şarkı sözü 
+# Mahnı sözü 
 
 @bot.on_message(filters.command("lyrics") & ~filters.edited)
 async def get_lyric_genius(_, message: Message):
