@@ -38,21 +38,21 @@ async def start_(client: Client, message: Message):
     await message.reply_sticker("CAACAgIAAxkBAAJAhWLeod8v1WIFu0_xulGE8dxkW7StAAJ6AQACEBptIpydt0hO73LeKQQ")
     await message.reply_text(
         f"""**Salam {message.from_user.mention} 🎵\nBen müzik indirme botuyum !\n
-● **Sizin yerinize müzik indirebilirim.**
+● **Sizin yerinize mahnı yükləyə bilirəm.**
 
-● **Komutları görmek için komutlar butonuna basınız.**
+● **Menyunu görmək üçünn menyu butonuna basın.**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "♬ Playlist", 
+                        "♬ Werab Qadın", 
                         url=f"https://t.me/{Config.PLAYLIST_NAME}"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 Komutlar" , callback_data= "cbbilgi"
+                        "📚 Menyular" , callback_data= "cbbilgi"
                     ),
                     InlineKeyboardButton(
                         "💭 Werab Qoxulu 🍷",
@@ -81,7 +81,7 @@ async def cbbilgi(_, query: CallbackQuery):
              [
                  [
                      InlineKeyboardButton(
-                         "🏠 Ana Sayfa", callback_data="cbstart")
+                         "🏠 İlk Səyfə", callback_data="cbstart")
                  ] 
              ]
          )
@@ -92,22 +92,22 @@ async def cbbilgi(_, query: CallbackQuery):
 
 @bot.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
-    await query.edit_message_text(f"""**Merhaba {query.from_user.mention} 🎵\nBen müzik indirme botuyum !\n\n● **Sizin yerinize müzik indirebilirim.**\n\n● **Komutları görmek için komutlar butonuna basınız.**""",
+    await query.edit_message_text(f"""**Salam {query.from_user.mention} 🎵\nMen mahnı yükləmə botuyum !\n\n● **Sizin yerinize mahnı yükləyə bilirəm.**\n\n● **Menyuları görmək üçün menyular butonuna basın.**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "♬ Playlist", 
+                        "♬ Werab Qadın", 
                         url=f"https://t.me/{Config.PLAYLIST_NAME}"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 Komutlar" , callback_data= "cbbilgi"
+                        "📚 Menyular" , callback_data= "cbbilgi"
                     ),
                     InlineKeyboardButton(
-                        "💭 Sohbet Grubu",
-                        url=f"https://t.me/Sohbetikumsal"
+                        "💭 Werab Qoxulu 🍷",
+                        url=f"https://t.me/WerabliAnlar"
                     )
                 ],
                 [
@@ -131,7 +131,7 @@ async def live(client: Client, message: Message):
 
 
   
-#music indirme#
+#mahnı yükləmə#
 
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
@@ -149,7 +149,7 @@ def bul(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        m.edit("<b>❌ Üzgünüm şarkı bulunamadı.\n\n Lütfen başka şarkı ismi söyleyin.</b>")
+        m.edit("<b>❌ Elə pis oldum ele pis oldum mahnı tapılmadı.\n\n Zəhmət Olmasa başqa mahnı adı deyin @WerabliAnlar 🍷.</b>")
         print(str(e))
         return
     m.edit("<b>📥 Yükləmə İşlemi Başladı...</b>")
@@ -169,7 +169,7 @@ def bul(_, message):
         m.delete()
         bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=res, performer="@mutsuz_panda", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
-        m.edit("<b>❌ Hatanın, düzelmesini bekleyiniz.</b>")
+        m.edit("<link Xətanın, düzelmesini gözləyin.</b>")
         print(e)
 
     try:
@@ -191,7 +191,7 @@ async def get_lyric_genius(_, message: Message):
     y.verbose = False
     S = y.search_song(query, get_full_info=False)
     if S is None:
-        return await m.edit("❌ `404` Mahnı sözleri tapılmadıı")
+        return await m.edit("❌ `404` Mahnı sözleri tapılmadı")
     xxx = f"""
 **sᴀʀᴋɪ:** {query}
 **sᴀɴᴀᴛᴄɪ:** {S.artist}
@@ -247,7 +247,7 @@ async def vsong(client, message):
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"🚫 **Hata:** {e}")
+        return await msg.edit(f"🚫 **Xəta:** {e}")
     preview = wget.download(thumbnail)
     await msg.edit("📤 **video yüklənir...**")
     await message.reply_video(
