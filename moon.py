@@ -37,32 +37,32 @@ bot = Client(
 async def start_(client: Client, message: Message):
     await message.reply_sticker("CAACAgIAAxkBAAJAhWLeod8v1WIFu0_xulGE8dxkW7StAAJ6AQACEBptIpydt0hO73LeKQQ")
     await message.reply_text(
-        f"""**Salam 🙋 {message.from_user.mention} 🎵\nMən Musiqi Yükləmək Üçün Yaranmış Botam !\n
-● **Sizin Yerinizə Musiqi Yükləyə Bilərəm :)).**
+        f"""**Merhaba {message.from_user.mention} 🎵\nBen müzik indirme botuyum !\n
+● **Sizin yerinize müzik indirebilirim.**
 
-● **Əmrləri görmək üçün əmrlər düyməsini basın.**
+● **Komutları görmek için komutlar butonuna basınız.**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
                         "♬ Playlist", 
-                        url=f"https://t.me/{Config.WerabliAnlarr}"
+                        url=f"https://t.me/{Config.PLAYLIST_NAME}"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 əmrlər" , callback_data= "cbbilgi"
+                        "📚 Komutlar" , callback_data= "cbbilgi"
                     ),
                     InlineKeyboardButton(
-                        "💭 Sohbet Qrup",
-                        url=f"https://t.me/WerabliAnlar"
+                        "💭 Sohbet Grubu",
+                        url=f"https://t.me/Sohbetikumsal"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🥷 Qurucu",
-                        url=f"https://t.me/{Config.ismiyev95}"
+                        "🏮 Owner",
+                        url=f"https://t.me/{Config.BOT_OWNER}"
                     )
                     
                 ]
@@ -76,12 +76,12 @@ async def start_(client: Client, message: Message):
 
 @bot.on_callback_query(filters.regex("cbbilgi"))
 async def cbbilgi(_, query: CallbackQuery):
-    await query.edit_message_text(f"""<b>Salam 🙋 {query.from_user.mention}!\nBu botun əmrlər menusu 💝\n\n ● /yukle - Musiqi adı və ya YouTube linki (musiqi yükləmək)\n\n● /lyrics - Mahnının adı (sözləri)\n\n● /video Videonun adı və ya YouTube linki (videonu endirmək) - \n\n</b>""",
+    await query.edit_message_text(f"""<b>Selam {query.from_user.mention}!\nBu botun komutlar menüsü 💝\n\n ● /bul - Müzik ismi veya YouTube linki (müzik indirme)\n\n● /lyrics - Şarkı ismi (şarkı sözleri)\n\n● /video - Video ismi veya YouTube linki (video indirme)\n\n</b>""",
     reply_markup=InlineKeyboardMarkup(
              [
                  [
                      InlineKeyboardButton(
-                         "🏠 Ana Səyfə", callback_data="cbstart")
+                         "🏠 Ana Sayfa", callback_data="cbstart")
                  ] 
              ]
          )
@@ -92,28 +92,28 @@ async def cbbilgi(_, query: CallbackQuery):
 
 @bot.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
-    await query.edit_message_text(f"""**Salam {query.from_user.mention} 🎵\nMən Mahnı Yükləmə Botuyam !\n\n● **Mən sizin üçün musiqi yükləyə bilərəm.**\n\n● **Əmrləri görmək üçün əmrlər düyməsini basın.**""",
+    await query.edit_message_text(f"""**Merhaba {query.from_user.mention} 🎵\nBen müzik indirme botuyum !\n\n● **Sizin yerinize müzik indirebilirim.**\n\n● **Komutları görmek için komutlar butonuna basınız.**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
                         "♬ Playlist", 
-                        url=f"https://t.me/{Config.WerabliAnlarr}"
+                        url=f"https://t.me/{Config.PLAYLIST_NAME}"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 Əmrlər" , callback_data= "cbbilgi"
+                        "📚 Komutlar" , callback_data= "cbbilgi"
                     ),
                     InlineKeyboardButton(
-                        "💭 Sohbet Qrupu",
-                        url=f"https://t.me/WerabliAnlar"
+                        "💭 Sohbet Grubu",
+                        url=f"https://t.me/Sohbetikumsal"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🥷 Sahibim",
-                        url=f"https://t.me/{Config.ismiyev95}"
+                        "🏮 Owner",
+                        url=f"https://t.me/{Config.BOT_OWNER}"
                     )
                     
                 ]
@@ -124,19 +124,19 @@ async def cbstart(_, query: CallbackQuery):
 
 #alive mesaji#
 
-@bot.on_message(filters.command("alive") & filters.user(Config.ismiyev95))
+@bot.on_message(filters.command("alive") & filters.user(Config.BOT_OWNER))
 async def live(client: Client, message: Message):
-    livemsg = await message.reply_text('`Bot Aktifdir!`')
+    livemsg = await message.reply_text('`Merhaba Sahip Bey 🖤`')
 
 
 
   
 #music indirme#
 
-@bot.on_message(filters.command("yukle") & ~filters.edited)
+@bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
-    m = message.reply("<b>Mahnıvız Axtarılır ... 🔍</b>")
+    m = message.reply("<b>Şarkınız Aranıyor ... 🔍</b>")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -149,27 +149,27 @@ def bul(_, message):
         duration = results[0]["duration"]
 
     except Exception as e:
-        m.edit("<b>❌ Bağışlayın mahnı tapılmadı.\n\n Başqa mahnının adını deyin zəhmət olmasa.</b>")
+        m.edit("<b>❌ Üzgünüm şarkı bulunamadı.\n\n Lütfen başka şarkı ismi söyleyin.</b>")
         print(str(e))
         return
-    m.edit("<b>📥 Yükləmə Prosesi Başladı...</b>")
+    m.edit("<b>📥 İndirme İşlemi Başladı...</b>")
     try:
         with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"**╭───────────────**\n**├▷ ♬ Başlıq: [{title[:35]}]({link})**\n**├───────────────**\n**├▷♬ Playlist @{Config.PLAYLIST_NAME}**\n**╰───────────────**"
-        res = f"**╭───────────────**\n**├▷ ♬ Başlıq: [{title[:35]}]({link})**\n**├───────────────**\n**├▷👤 Tələb** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n**├───────────────**\n**├▷🌀 Bot: @{Config.BOT_USERNAME}**\n**╰───────────────**"
+        rep = f"**╭───────────────**\n**├▷ ♬ Başlık: [{title[:35]}]({link})**\n**├───────────────**\n**├▷♬ Playlist @{Config.PLAYLIST_NAME}**\n**╰───────────────**"
+        res = f"**╭───────────────**\n**├▷ ♬ Başlık: [{title[:35]}]({link})**\n**├───────────────**\n**├▷👤 İsteyen** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n**├───────────────**\n**├▷🌀 Bot: @{Config.BOT_USERNAME}**\n**╰───────────────**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        m.edit("📤 Yüklənir..")
+        m.edit("📤 Yükleniyor..")
         message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@mutsuz_panda")
         m.delete()
-        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=res, performer="@Vusaliw", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=res, performer="@mutsuz_panda", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
-        m.edit("<b>❌ Xətanım, Düzəlməsini Gözləyin.</b>")
+        m.edit("<b>❌ Hatanın, düzelmesini bekleyiniz.</b>")
         print(e)
 
     try:
@@ -183,15 +183,15 @@ def bul(_, message):
 @bot.on_message(filters.command("lyrics") & ~filters.edited)
 async def get_lyric_genius(_, message: Message):
     if len(message.command) < 2:
-        return await message.reply_text("**İşlədmək:**\n\n/lyrics (Mahnı Adı)")
-    m = await message.reply_text("🔍 Mahnı Sözləri Axtarılır ...")
+        return await message.reply_text("**ᴋᴜʟʟᴀɴɪᴍ:**\n\n/lyrics (Şarkı adı)")
+    m = await message.reply_text("🔍 Şarkı sözleri aranıyor ...")
     query = message.text.split(None, 1)[1]
     x = "OXaVabSRKQLqwpiYOn-E4Y7k3wj-TNdL5RfDPXlnXhCErbcqVvdCF-WnMR5TBctI"
     y = lyricsgenius.Genius(x)
     y.verbose = False
     S = y.search_song(query, get_full_info=False)
     if S is None:
-        return await m.edit("❌ `404` Mahnı Sözləri Tapəlmadı!")
+        return await m.edit("❌ `404` Şarkı sözleri bulunamadı")
     xxx = f"""
 **sᴀʀᴋɪ:** {query}
 **sᴀɴᴀᴛᴄɪ:** {S.artist}
@@ -242,14 +242,14 @@ async def vsong(client, message):
     except Exception as e:
         print(e)
     try:
-        msg = await message.reply("📥 **Video Yükləyirəm...**")
+        msg = await message.reply("📥 **video indiriyorum...**")
         with YoutubeDL(ydl_opts) as ytdl:
             ytdl_data = ytdl.extract_info(link, download=True)
             file_name = ytdl.prepare_filename(ytdl_data)
     except Exception as e:
-        return await msg.edit(f"🚫 **Xəta:** {e}")
+        return await msg.edit(f"🚫 **Hata:** {e}")
     preview = wget.download(thumbnail)
-    await msg.edit("📤 **Video Yükləyirəm...**")
+    await msg.edit("📤 **video yüklüyorum...**")
     await message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
