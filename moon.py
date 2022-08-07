@@ -37,7 +37,7 @@ bot = Client(
 async def start_(client: Client, message: Message):
     await message.reply_sticker("CAACAgIAAxkBAAJAhWLeod8v1WIFu0_xulGE8dxkW7StAAJ6AQACEBptIpydt0hO73LeKQQ")
     await message.reply_text(
-        f"""**Salam {message.from_user.mention} 🎵\nBen müzik indirme botuyum !\n
+        f"""**Salam {message.from_user.mention} 🎵\nMəen mahnı yükləmə botuyum !\n
 ● **Sizin yerinize mahnı yükləyə bilirəm.**
 
 ● **Menyunu görmək üçünn menyu butonuna basın.**
@@ -76,7 +76,7 @@ async def start_(client: Client, message: Message):
 
 @bot.on_callback_query(filters.regex("cbbilgi"))
 async def cbbilgi(_, query: CallbackQuery):
-    await query.edit_message_text(f"""<b>Selam {query.from_user.mention}!\nBu botun komutlar menüsü 💝\n\n ● /bul - Müzik ismi veya YouTube linki (müzik indirme)\n\n● /lyrics - Şarkı ismi (şarkı sözleri)\n\n● /video - Video ismi veya YouTube linki (video indirme)\n\n</b>""",
+    await query.edit_message_text(f"""<b>Salam {query.from_user.mention}!\nBu botun Menyusu 💝\n\n ● /song - Mahnı adı ve ya YouTube linki (mahnı yükləmə)\n\n● /lyrics - Mahnı adı (mahnı sözleri)\n\n● /svideo - Video adı ve ya YouTube linki (video yükləmə)\n\n</b>""",
     reply_markup=InlineKeyboardMarkup(
              [
                  [
