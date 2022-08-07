@@ -126,7 +126,7 @@ async def cbstart(_, query: CallbackQuery):
 
 @bot.on_message(filters.command("alive") & filters.user(Config.BOT_OWNER))
 async def live(client: Client, message: Message):
-    livemsg = await message.reply_text('`Salam Sahip Bəy 🖤`')
+    livemsg = await message.reply_text('`Salam Sahib Bəy 🖤`')
 
 
 
