@@ -47,7 +47,7 @@ async def start_(client: Client, message: Message):
                 [
                     InlineKeyboardButton(
                         "♬ Playlist", 
-                        url=f"https://t.me/{Config.PLAYLIST_NAME}"
+                        url=f"https://t.me/{Config.WerabliAnlarr}"
                     )
                 ],
                 [
@@ -62,7 +62,7 @@ async def start_(client: Client, message: Message):
                 [
                     InlineKeyboardButton(
                         "🥷 Qurucu",
-                        url=f"https://t.me/{Config.BOT_OWNER}"
+                        url=f"https://t.me/{Config.ismiyev95}"
                     )
                     
                 ]
@@ -98,7 +98,7 @@ async def cbstart(_, query: CallbackQuery):
                 [
                     InlineKeyboardButton(
                         "♬ Playlist", 
-                        url=f"https://t.me/{Config.PLAYLIST_NAME}"
+                        url=f"https://t.me/{Config.WerabliAnlarr}"
                     )
                 ],
                 [
