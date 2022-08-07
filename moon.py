@@ -178,7 +178,7 @@ def song(_, message):
     except Exception as e:
         print(e)
 
-# Mahnı sözü 
+# Mahnı sözü
 
 @bot.on_message(filters.command("lyrics") & ~filters.edited)
 async def get_lyric_genius(_, message: Message):
