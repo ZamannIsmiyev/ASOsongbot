@@ -37,7 +37,7 @@ bot = Client(
 async def start_(client: Client, message: Message):
     await message.reply_sticker("CAACAgIAAxkBAAJAhWLeod8v1WIFu0_xulGE8dxkW7StAAJ6AQACEBptIpydt0hO73LeKQQ")
     await message.reply_text(
-        f"""**Salam {message.from_user.mention} 🎵\nMən Musiqi Yükləmək Üçün Yaranmış Botam !\n
+        f"""**Salam 🙋 {message.from_user.mention} 🎵\nMən Musiqi Yükləmək Üçün Yaranmış Botam !\n
 ● **Sizin Yerinizə Musiqi Yükləyə Bilərəm :)).**
 
 ● **Əmrləri görmək üçün əmrlər düyməsini basın.**
@@ -56,7 +56,7 @@ async def start_(client: Client, message: Message):
                     ),
                     InlineKeyboardButton(
                         "💭 Sohbet Qrup",
-                        url=f"https://t.me/Sohbetikumsal"
+                        url=f"https://t.me/unf_sohbet"
                     )
                 ],
                 [
@@ -76,7 +76,7 @@ async def start_(client: Client, message: Message):
 
 @bot.on_callback_query(filters.regex("cbbilgi"))
 async def cbbilgi(_, query: CallbackQuery):
-    await query.edit_message_text(f"""<b>Salam {query.from_user.mention}!\nBu botun əmrlər menusu 💝\n\n ● /yukle - Musiqi adı və ya YouTube linki (musiqi yükləmək)\n\n● /lyrics - Mahnının adı (sözləri)\n\n● /video Videonun adı və ya YouTube linki (videonu endirmək) - \n\n</b>""",
+    await query.edit_message_text(f"""<b>Salam 🙋 {query.from_user.mention}!\nBu botun əmrlər menusu 💝\n\n ● /yukle - Musiqi adı və ya YouTube linki (musiqi yükləmək)\n\n● /lyrics - Mahnının adı (sözləri)\n\n● /video Videonun adı və ya YouTube linki (videonu endirmək) - \n\n</b>""",
     reply_markup=InlineKeyboardMarkup(
              [
                  [
@@ -106,13 +106,13 @@ async def cbstart(_, query: CallbackQuery):
                         "📚 Əmrlər" , callback_data= "cbbilgi"
                     ),
                     InlineKeyboardButton(
-                        "💭 Sohbet Qrupi",
-                        url=f"https://t.me/Sohbetikumsal"
+                        "💭 Sohbet Qrupu",
+                        url=f"https://t.me/unf_sohbet"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🥷 Sahib",
+                        "🥷 Qurucu",
                         url=f"https://t.me/{Config.BOT_OWNER}"
                     )
                     
