@@ -1,0 +1,64 @@
+{
+    "name": "MoonMusicBot",
+    "description": "Telegram müzik indirme botu.",
+    "logo": "https://telegra.ph//file/3f772b9651aef1226650e.jpg",
+    "keywords": [
+        "Moon",
+        "Music",
+        "Bot"
+    ],
+    "repository": "https://github.com/Gecekus/musicdowload",
+    "success_url": "https://github.com/Gecekus/musicdowload",
+    "image": "heroku/python",
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "env": {
+        "API_ID": {
+            "description": "my.telegram.org dan ala bilirsiniz.",
+            "value": "",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "my.telegram.org dan ala bilirsiniz.",
+            "value": "",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "@Botfather botundan ala bilirsiniz.",
+            "value": "",
+            "required": true
+        },
+        "PLAYLIST_NAME": {
+            "description": "Playlist kanalının kullanıcı adını @ bu işareti olmadan yazın.",
+            "value": "",
+            "required": true
+        },
+        "PLAYLIST_ID": {
+            "description": "Playlist kanalının ID-ni yazın.",
+            "value": "",
+            "required": true
+        },
+        "BOT_OWNER": {
+            "description": "Kendi kullanıcı adınızı @ bu işareti olmadan yazın.",
+            "value": "",
+            "required": true
+        },
+        "BOT_USERNAME": {
+            "description": "Botun kullanıcı adını @ bu işareti olmadan yazın.",
+            "value": "",
+            "required": true
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+        },
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
