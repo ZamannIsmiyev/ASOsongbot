@@ -37,7 +37,7 @@ bot = Client(
 async def start_(client: Client, message: Message):
     await message.reply_sticker("CAACAgIAAxkBAAJAhWLeod8v1WIFu0_xulGE8dxkW7StAAJ6AQACEBptIpydt0hO73LeKQQ")
     await message.reply_text(
-        f"""**Salam {message.from_user.mention} 🎵\nMəen mahnı yükləmə botuyum !\n
+        f"""**Salam {message.from_user.mention} 🎵\nMən mahnı yükləmə botuyum !\n
 ● **Sizin yerinize mahnı yükləyə bilirəm.**
 
 ● **Menyunu görmək üçünn menyu butonuna basın.**
@@ -47,7 +47,7 @@ async def start_(client: Client, message: Message):
                 [
                     InlineKeyboardButton(
                         "♬ Werab Qadın 🍷", 
-                        url=f"https://t.me/{Config.PLAYLIST_NAME}"
+                        url=f"https://t.me/{Config.WerablıAnlarr}"
                     )
                 ],
                 [
@@ -92,13 +92,13 @@ async def cbbilgi(_, query: CallbackQuery):
 
 @bot.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
-    await query.edit_message_text(f"""**Salam {query.from_user.mention} 🎵\nMen mahnı yükləmə botuyum !\n\n● **Sizin yerinize mahnı yükləyə bilirəm.**\n\n● **Menyuları görmək üçün menyular butonuna basın.**""",
+    await query.edit_message_text(f"""**Salam {query.from_user.mention} 🎵\nMən mahnı yükləmə botuyum !\n\n● **Sizin yerinize mahnı yükləyə bilirəm.**\n\n● **Menyuları görmək üçün menyular butonuna basın.**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "♬ Werab Qadın", 
-                        url=f"https://t.me/{Config.PLAYLIST_NAME}"
+                        "♬ Werab Qadın🍷", 
+                        url=f"https://t.me/{Config.WerabliAnlarr}"
                     )
                 ],
                 [
@@ -158,14 +158,14 @@ def song(_, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"**╭───────────────**\n**├▷ ♬ Başlık: [{title[:35]}]({link})**\n**├───────────────**\n**├▷♬ Playlist @{Config.PLAYLIST_NAME}**\n**╰───────────────**"
+        rep = f"**╭───────────────**\n**├▷ ♬ Başlık: [{title[:35]}]({link})**\n**├───────────────**\n**├▷♬ Playlist @{Config.Werablianlarr}**\n**╰───────────────**"
         res = f"**╭───────────────**\n**├▷ ♬ Başlık: [{title[:35]}]({link})**\n**├───────────────**\n**├▷👤 İsteyen** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n**├───────────────**\n**├▷🌀 Bot: @{Config.BOT_USERNAME}**\n**╰───────────────**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit("📤 Yüklenir..")
-        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@mutsuz_panda")
+        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@ismiyev95")
         m.delete()
         bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=res, performer="@mutsuz_panda", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
