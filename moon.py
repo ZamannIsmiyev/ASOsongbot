@@ -23,7 +23,7 @@ ydl_opts = {
 #config#
 
 bot = Client(
-    'moonBot', 
+    'ASOsong_bot', 
     bot_token = Config.BOT_TOKEN,
     api_id = Config.API_ID,
     api_hash = Config.API_HASH
@@ -37,7 +37,7 @@ bot = Client(
 async def start_(client: Client, message: Message):
     await message.reply_sticker("CAACAgIAAxkBAAJAhWLeod8v1WIFu0_xulGE8dxkW7StAAJ6AQACEBptIpydt0hO73LeKQQ")
     await message.reply_text(
-        f"""**Salam {message.from_user.mention} 🎵\nBen müzik indirme botuyum !\n
+        f"""**Salam {message.from_user.mention} 🎵\nMən mahnı yükləmə botuyum !\n
 ● **Sizin yerinize mahnı yükləyə bilirəm.**
 
 ● **Menyunu görmək üçünn menyu butonuna basın.**
@@ -61,7 +61,7 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "🏮 Owner",
+                        "👨‍💻 Owner",
                         url=f"https://t.me/{Config.BOT_OWNER}"
                     )
                     
@@ -76,7 +76,7 @@ async def start_(client: Client, message: Message):
 
 @bot.on_callback_query(filters.regex("cbbilgi"))
 async def cbbilgi(_, query: CallbackQuery):
-    await query.edit_message_text(f"""<b>Selam {query.from_user.mention}!\nBu botun komutlar menüsü 💝\n\n ● /bul - Müzik ismi veya YouTube linki (müzik indirme)\n\n● /lyrics - Şarkı ismi (şarkı sözleri)\n\n● /video - Video ismi veya YouTube linki (video indirme)\n\n</b>""",
+    await query.edit_message_text(f"""<b>Selam {query.from_user.mention}!\nBu botun menyusu 💝\n\n ● /song - Mahnı adı ve ya YouTube linki (mahnı yükləmə)\n\n● /lyrics - Mahnı adı (mahnı sözleri)\n\n● /vsong - Video adı ve ya YouTube linki (video yükləmə)\n\n</b>""",
     reply_markup=InlineKeyboardMarkup(
              [
                  [
@@ -92,12 +92,12 @@ async def cbbilgi(_, query: CallbackQuery):
 
 @bot.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
-    await query.edit_message_text(f"""**Salam {query.from_user.mention} 🎵\nMen mahnı yükləmə botuyum !\n\n● **Sizin yerinize mahnı yükləyə bilirəm.**\n\n● **Menyuları görmək üçün menyular butonuna basın.**""",
+    await query.edit_message_text(f"""**Salam {query.from_user.mention} 🎵\nMən mahnı yükləmə botuyum !\n\n● **Sizin yerinize mahnı yükləyə bilirəm.**\n\n● **Menyuları görmək üçün menyular butonuna basın.**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "♬ Werab Qadın", 
+                        "♬ Werab Qadın🍷", 
                         url=f"https://t.me/{Config.PLAYLIST_NAME}"
                     )
                 ],
@@ -112,7 +112,7 @@ async def cbstart(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "🏮 Owner",
+                        "👨‍💻 Owner",
                         url=f"https://t.me/{Config.BOT_OWNER}"
                     )
                     
@@ -165,9 +165,9 @@ def song(_, message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit("📤 Yüklenir..")
-        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@mutsuz_panda")
+        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@ismiyev95")
         m.delete()
-        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=res, performer="@mutsuz_panda", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=res, performer="@ismiyev95", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
         m.edit("<link Xətanın, düzelmesini gözləyin.</b>")
         print(e)
