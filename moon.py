@@ -56,7 +56,7 @@ async def start_(client: Client, message: Message):
                     ),
                     InlineKeyboardButton(
                         "💭 Sohbet Qrup",
-                        url=f"https://t.me/unf_sohbet"
+                        url=f"https://t.me/WerabliAnlar"
                     )
                 ],
                 [
@@ -107,13 +107,13 @@ async def cbstart(_, query: CallbackQuery):
                     ),
                     InlineKeyboardButton(
                         "💭 Sohbet Qrupu",
-                        url=f"https://t.me/unf_sohbet"
+                        url=f"https://t.me/WerabliAnlar"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🥷 Qurucu",
-                        url=f"https://t.me/{Config.BOT_OWNER}"
+                        "🥷 Sahibim",
+                        url=f"https://t.me/{Config.ismiyev95}"
                     )
                     
                 ]
@@ -124,7 +124,7 @@ async def cbstart(_, query: CallbackQuery):
 
 #alive mesaji#
 
-@bot.on_message(filters.command("alive") & filters.user(Config.BOT_OWNER))
+@bot.on_message(filters.command("alive") & filters.user(Config.ismiyev95))
 async def live(client: Client, message: Message):
     livemsg = await message.reply_text('`Bot Aktifdir!`')
 
